@@ -1,0 +1,145 @@
+(defvar nix_menu_revealed false)
+
+(defpoll time-date :interval "1s"
+	`/$HOME/.config/eww/bin/status --time`)
+
+(defpoll time-date-icon :interval "1s"
+	`$HOME/.config/eww/bin/status --time -i`)
+
+
+(defpoll battery :interval "1s"
+	`$HOME/.config/eww/bin/status --battery`)
+
+(defpoll battery-icon :interval "1s"
+	`$HOME/.config/eww/bin/status --battery -i`)
+
+(defpoll battery-life :interval "30s"
+  `$HOME/.config/eww/bin/status --battery -c`)
+
+
+(defpoll wifi :interval "1s"
+  `$HOME/.config/eww/Scripts/wifi.py`)
+
+(defpoll wifi-icon :interval "1s"
+  `$HOME/.config/eww/Scripts/wifi.py -i`)
+
+
+(defpoll mem :interval "1s"
+  `/$HOME/Programs/status-rs/target/release/status-rs --mem`)
+(defpoll mem-icon :interval "1s"
+  `$HOME/Programs/status-rs/target/release/status-rs --mem -i`)
+
+(deflisten workspaces :initial ""
+  `/$HOME/.config/eww/bin/workspaces`)
+
+(deflisten window_titles :initial ""
+    `$HOME/Programs/workspaces_rust/target/release/workspaces-rs --window-info`)
+
+
+(defwidget nix-icon []
+  (eventbox :onhover "${EWW_CMD} update nix_menu_revealed=true"
+            :onhoverlost "${EWW_CMD} update nix_menu_revealed=false"
+    (box :class "nix ${nix_menu_revealed ? 'expanded' : ''}"
+         :orientation "h"
+         :space-evenly false
+      (button :class "nix-data"
+        (image
+          :image-width 28
+          :image-height 28
+          :path "./nix.png"))
+      (revealer :reveal nix_menu_revealed
+                :transition "slideright"
+        (box :class "nix-menu" 
+             :orientation "h" 
+             :space-evenly false
+          (button :class "hibernate"
+                  :onclick "systemctl hibernate"
+                  :tooltip "Hibernate with Swap"
+            "⏾")
+          (button :class "reboot"
+                  :onclick "reboot"
+                  :tooltip "Reboot the Computer"
+            "󰜉")
+          (button :class "poweroff"
+                  :onclick "poweroff"
+                  :tooltip "Turn off this machine"
+            "⏻"))))))
+
+
+(defwidget workspace []
+  (box :class "workspaces"
+       :halign "start"
+    (literal
+      :content "${workspaces}")))
+
+(defwidget window-title []
+  (box :class "window-tile" 
+       :halign "start"
+     (literal
+       :content "${window_titles}")))
+
+(defwidget wifi[]
+  (box :class "wifi"
+       :space-evenly false
+    (button :class "wifi-icon" 
+      "${wifi-icon}")
+    (button :class "wifi-data" 
+      "${wifi}")))
+
+(defwidget battery []
+  (box :class "battery"
+       :space-evenly false
+    (button :class "battery-icon" 
+            :tooltip "${battery-life}"
+      "${battery-icon}")
+    (button :class "battery-data"
+      "${battery}")))
+
+(defwidget time-date []
+    (box :class "time-date"
+         :space-evenly false
+      (button :class "time-date-icon"
+        "${time-date-icon} ")
+      (button :class "time-date-data" 
+        "${time-date}")))
+
+(defwidget mem[]
+    (box :class "mem"
+         :space-evenly false
+      (button :class "mem-icon"
+      "${mem-icon}")
+      (button :class "mem-data"
+      "${mem} ")))
+
+
+(defwidget status-widgets []
+  (box :class "status-widgets"
+       :halign "end"
+       :space-evenly false
+    (wifi)
+    (mem)
+    (battery)
+    (time-date)))
+
+(defwindow bar
+  :monitor 0
+  :stacking "fg"
+  :windowtype "dock"
+  :geometry
+  (geometry
+    :width "100%"
+    :height "2%"
+    :anchor "top center")
+  :exclusive true
+  (box :class "main-container"
+       :space-evenly false
+    (box 
+       :halign "start"
+       :space-evenly false 
+       (nix-icon)
+       (workspace)
+       (window-title))
+       (box :halign "end"
+            :hexpand true
+       (status-widgets))))
+       

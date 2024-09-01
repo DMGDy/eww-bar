@@ -1,0 +1,184 @@
+$bg: rgba(#ffffff,0.1);
+$fg: #dddddd;
+$shadow: rgba(#000000,0.3);
+$border_col: rgba(#cccccc,0.18);
+$best_so_far: rgba(255,255,255,0.1); 
+
+* {
+  font-family: 'Ubuntu Nerd Font', 'Ubuntu', sans-serif;
+}
+.main-container {
+  min-width: 1920px;
+}
+.bar {
+   background-image: -gtk-gradient(
+    linear,
+    left top, right top,
+    from(rgba(90,71,175,.2)),
+    to(rgba(66, 133, 244, 0.4))
+  );
+}
+
+.workspace-entry {
+  padding: 0px; 
+  margin: 0px;
+  font-size: 20px;
+
+  color: #a89984;  // Default color for inactive workspaces
+}
+
+.active {
+    border-radius: 0px;
+    background-color:#52b8fe ;  
+  transition: 0.3s ease-in-out;
+    padding: 5px 12px;
+    color: #fbf1c7;  // Light text color for contrast
+    &:hover { background-color: darken(#52b8fe, 20%); }
+}
+
+.occupied {
+    border-radius: 0px;
+    color:darken(#a98bf6,30%);  ;
+    background-color: darken(#a98bf6,0%);  
+
+    &:hover { background-color: darken(#a98bf6,20%); }
+}
+.empty{
+  border-radius: 0px;
+  color: #6A7A8C;
+  &:hover { color: darken(#6A7A8C,20%);}
+}
+
+.window-container {
+  padding: 5px 0px 5px 5px;
+  margin: 0px 0px 0px 10px;
+  font-size: 21px;
+
+  .win-title {
+    color: #FFF;
+    font-weight: bold;
+  }
+
+  .win-info {
+    color: #AAAAAA;
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+
+
+
+.nix {
+  padding: 0px 5px;
+  margin: 0px ;
+
+
+  button {
+    background: none;
+    border-radius: 0px;
+    padding: 0px 0px;
+    margin: 0px;
+  }
+
+  .nix-button {
+    padding: 0px 10px;
+    margin:0px;
+  }
+
+  .nix-menu {
+    padding: 0px;
+
+    button {
+      padding: 0px 15px;
+      margin: 0px;
+      background: rgba(0,0,0,0.2);
+      border: none;
+      font-size: 25px;
+    }
+  }
+}
+
+.hibernate{
+  color: #FF8C00;
+  &:hover { color: darken(#FF8C00, 20%); }
+}
+
+.poweroff{
+  color: #DC143C;
+  &:hover { color: darken(#DC143C, 20%); }
+}
+
+.reboot{
+  color: #0056b3;
+  &:hover { color: darken(#0056b3, 20%); }
+}
+
+.status-widgets {
+  border-radius: 0px ;
+  font-size: 18px;
+  background: rgba(0,0,0,0.6);
+  button {
+    border-left: violet solid 1px;
+    background: none;
+    border: none;
+    padding: 0px 0px 0px 0px;
+    margin: 0 0px;
+    border-radius: 0px;
+  }
+
+  .wifi-data {
+    padding: 0px 10px 0px 0px;
+    color: #4CAF50;  /* Green for WiFi */
+  }
+
+  .wifi-icon {
+    font-size:25px;
+    padding:0px 10px 0px 12px;
+    margin:0px 5px 0px 0px;
+    background: #4CAF50;  /* Green for WiFi */
+    color: #FFF;  /* Green for WiFi */
+    &:hover { background: darken(#4CAF50,10%)}
+  }
+
+  .mem-data{
+    padding: 0px 10px 0px 0px;
+    color: lighten(#008080, 10%);  
+  }
+  .mem-icon {
+    font-size:20px;
+    padding: 0px 12px 0px 10px;
+    margin: 0px 5px 0px 0px;
+    color: #FFF;
+    background: lighten(#008080, 10%);  
+    &:hover { background: #008080}
+  }
+
+
+
+  .battery-data{
+    padding: 0px 10px 0px 0px;
+    color: #2196F3;  /* Blue for Battery */
+  }
+
+  .battery-icon{
+    padding: 0px 10px 0px 12px;
+    margin: 0px 5px 0px 0px;
+    color: #FFF;
+    background: #2196F3;  /* Blue for Battery */
+    &:hover { background: darken(#2196F3, 20%); }
+  }
+
+  .time-date-data{
+    padding: 0px 10px 0px 0px;
+    color: #FFC107;  /* Amber for Time/Date */
+  }
+
+  .time-date-icon{
+    padding: 0px 6px 0px 12px;
+    margin: 0px 5px 0px 0px;
+    color: #FFF;
+    background: #FFC107;  /* Amber for Time/Date */
+    &:hover { background: darken(#FFC107, 20%); }
+  }
+}
