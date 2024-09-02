@@ -25,15 +25,17 @@
 
 
 (defpoll mem :interval "1s"
-  `/$HOME/Programs/status-rs/target/release/status-rs --mem`)
+  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --mem`)
+
 (defpoll mem-icon :interval "1s"
-  `$HOME/Programs/status-rs/target/release/status-rs --mem -i`)
+  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --mem -i`)
+
 
 (deflisten workspaces :initial ""
   `/$HOME/.config/eww/bin/workspaces`)
 
 (deflisten window_titles :initial ""
-    `$HOME/Programs/workspaces_rust/target/release/workspaces-rs --window-info`)
+  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --window-info`)
 
 
 (defwidget nix-icon []
