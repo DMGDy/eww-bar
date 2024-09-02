@@ -7,9 +7,9 @@ Also because this runs well on [hyprland](https://github.com/hyprwm/Hyprland).
 ## dependencies
 this bar relies on some other binaries as the tools to fetch the module information are compiled binaries in rust and in C.
 
-* [eww-bar-widget-generator](git@github.com:DMGDy/eww-bar-widget-generator.git)
-* [statuses](git@github.com:DMGDy/statuses.git)
-* [statuses-rs](git@github.com:DMGDy/statuses-rs.git)
+* [eww-bar-widget-generator](https://github.com/DMGDy/eww-bar-widget-generator)
+* [statuses](https://github.com/DMGDy/statuses)
+* [statuses-rs](https://github.com/DMGDy/statuses-rs)
 
 ## purpose
 
