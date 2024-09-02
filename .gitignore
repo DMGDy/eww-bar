@@ -1,2 +1,3 @@
-bin/status
-bin/workspaces
+/bin
+status
+workspaces
