@@ -1,8 +1,8 @@
 # my eww bar
 
 ## epic bar!
-This uses [eww][https://github.com/elkowar/eww] to recreate and enhance my experience with [dwm][https://github.com/DMGDy/dwm].
-Also because this runs well on [hyprland][https://github.com/hyprwm/Hyprland].
+This uses ![eww][https://github.com/elkowar/eww] to recreate and enhance my experience with ![dwm][https://github.com/DMGDy/dwm].
+Also because this runs well on ![hyprland][https://github.com/hyprwm/Hyprland].
 
 ## purpose
 
@@ -12,3 +12,9 @@ As to why the wifi widget is not a compiled binary instead of a Python script, i
 
 ## uses
 run `eww open bar` 
+
+## preview
+
+<img src="preview.gif">
+
+
