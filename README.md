@@ -29,6 +29,7 @@ compiled binaries are far faster and more efficient to run compared to scripts. 
 
 ## dependencies
 this bar relies on some other binaries as the tools to fetch the module information are compiled binaries in rust and in C.
+also requires hyprland and whatever else package the status fetchers i wrote use. 
 
 ## uses
 run `eww open bar` 
