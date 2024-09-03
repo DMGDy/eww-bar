@@ -162,7 +162,8 @@ $best_so_far: rgba(255,255,255,0.1);
   }
 
   .battery-icon{
-    padding: 0px 10px 0px 12px;
+    font-size:25px;
+    padding: 0px 5px 0px 12px;
     margin: 0px 5px 0px 0px;
     color: #FFF;
     background: #2196F3;  /* Blue for Battery */
@@ -175,7 +176,8 @@ $best_so_far: rgba(255,255,255,0.1);
   }
 
   .time-date-icon{
-    padding: 0px 6px 0px 12px;
+    font-size:25px;
+    padding: 0px 2px 0px 12px;
     margin: 0px 5px 0px 0px;
     color: #FFF;
     background: #FFC107;  /* Amber for Time/Date */
