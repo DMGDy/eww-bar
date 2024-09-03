@@ -18,10 +18,10 @@
 
 
 (defpoll wifi :interval "1s"
-  `$HOME/.config/eww/Scripts/wifi.py`)
+  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --wifi-info`)
 
 (defpoll wifi-icon :interval "1s"
-  `$HOME/.config/eww/Scripts/wifi.py -i`)
+  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --connection-status`)
 
 
 (defpoll mem :interval "1s"
