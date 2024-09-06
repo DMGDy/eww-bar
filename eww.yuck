@@ -101,7 +101,7 @@
     (box :class "time-date"
          :space-evenly false
       (button :class "time-date-icon"
-        "${time-date-icon} ")
+        "${time-date-icon}")
       (button :class "time-date-data" 
         "${time-date}")))
 
@@ -111,7 +111,7 @@
       (button :class "mem-icon"
       "${mem-icon}")
       (button :class "mem-data"
-      "${mem} ")))
+      "${mem}")))
 
 (defwidget usr[]
     (box :class "usr"
