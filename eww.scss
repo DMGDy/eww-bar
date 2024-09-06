@@ -135,7 +135,7 @@ $best_so_far: rgba(255,255,255,0.1);
 
   .wifi-icon {
     font-size:25px;
-    padding:0px 10px 0px 12px;
+    padding:0px 5px 0px 4px;
     margin:0px 5px 0px 0px;
     background: #4CAF50;  /* Green for WiFi */
     color: #FFF;  /* Green for WiFi */
@@ -148,20 +148,20 @@ $best_so_far: rgba(255,255,255,0.1);
   }
   .mem-icon {
     font-size:20px;
-    padding: 0px 12px 0px 10px;
+    padding: 0px 8px 0px 5px;
     margin: 0px 5px 0px 0px;
     color: #FFF;
     background: lighten(#008080, 10%);  
     &:hover { background: #008080}
   }
   .name{
-    padding: 0px 10px 0px 0px;
+    padding: 0px 8px 0px 2px;
     color: red;  
     text-shadow: red 1px 0 2px;
   }
   .usr-icon {
     font-size:22px;
-    padding: 0px 12px 0px 10px;
+    padding: 0px 5px;
     margin: 0px 5px 0px 0px;
     color: #FFF;
     background: red;  
@@ -178,7 +178,7 @@ $best_so_far: rgba(255,255,255,0.1);
 
   .battery-icon{
     font-size:25px;
-    padding: 0px 5px 0px 12px;
+    padding: 0px 0px 0px 5px;
     margin: 0px 5px 0px 0px;
     color: #FFF;
     background: #2196F3;  /* Blue for Battery */
@@ -192,7 +192,7 @@ $best_so_far: rgba(255,255,255,0.1);
 
   .time-date-icon{
     font-size:25px;
-    padding: 0px 2px 0px 12px;
+    padding: 0px 0px 0px 6px;
     margin: 0px 5px 0px 0px;
     color: #FFF;
     background: #FFC107;  /* Amber for Time/Date */
