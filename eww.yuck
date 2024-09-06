@@ -113,11 +113,21 @@
       (button :class "mem-data"
       "${mem} ")))
 
+(defwidget usr[]
+    (box :class "usr"
+         :space-evenly false
+      (button :class "usr-icon"
+      "")
+      (button :class "name"
+      "dylandy")))
+
+
 
 (defwidget status-widgets []
   (box :class "status-widgets"
        :halign "end"
        :space-evenly false
+    (usr)
     (wifi)
     (mem)
     (battery)
