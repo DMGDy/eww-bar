@@ -46,8 +46,8 @@
          :space-evenly false
       (button :class "nix-data"
         (image
-          :image-width 28
-          :image-height 28
+          :image-width 22
+          :image-height 22
           :path "./nix.png"))
       (revealer :reveal nix_menu_revealed
                 :transition "slideright"
@@ -140,7 +140,7 @@
   :geometry
   (geometry
     :width "100%"
-    :height "2%"
+    :height "0%"
     :anchor "top center")
   :exclusive true
   (box :class "main-container"
