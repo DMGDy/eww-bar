@@ -13,7 +13,7 @@
 (defpoll battery-icon :interval "1s"
 	`$HOME/.config/eww/bin/status --battery -i`)
 
-(defpoll battery-life :interval "30s"
+(defpoll battery-life :interval "1s"
   `$HOME/.config/eww/bin/status --battery -c`)
 
 
