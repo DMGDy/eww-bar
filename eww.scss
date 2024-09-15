@@ -14,8 +14,8 @@ $text_size: 16px;
    background-image: -gtk-gradient(
     linear,
     left top, right top,
-    from(rgba(90,71,175,.2)),
-    to(rgba(66, 133, 244, 0.4))
+    from(rgba(0,230,255,.3)),
+    to(rgba(255, 0, 255, 0.8))
   );
 }
 
@@ -34,6 +34,7 @@ $text_size: 16px;
 
 .active {
     font-size: $text_size;
+    text-shadow: 1px 1px 2px white, 0 0 1em blue, 0 0 2em white;
     background-color:#52b8fe ;  
     transition: 0.3s ease-in-out;
     color: #fbf1c7;  // Light text color for contrast
@@ -56,13 +57,14 @@ $text_size: 16px;
   font-size: $text_size;
 
   .win-title {
+    padding: 0px 0px; 
     color: #FFFFFF;
     font-weight: bold;
-    text-shadow: 1px 1px 2px white, 0 0 1em blue, 0 0 0.2em blue;
+    text-shadow: 1px 1px 4px white, 0 0 1em blue, 0 0 0.2em blue;
   }
 
   .win-info {
-    color: #AAAAAA;
+    color: #EEEEEE;
     font-weight: bold;
     font-style: italic;
   }
@@ -74,6 +76,7 @@ $text_size: 16px;
 .nix {
   padding: 0px 8px;
   margin: 0px ;
+background: rgba(0,0,0,0.6);
 
 
   button {
@@ -114,7 +117,7 @@ $text_size: 16px;
 
 .reboot{
   color: #0056b3;
-  &:hover { color: darken(#0056b3, 20%); }
+  &:hover { color: lighten(#0056b3, 20%); }
 }
 
 .status-widgets {
@@ -189,7 +192,7 @@ $text_size: 16px;
 
   .time-date-data{
     padding: 0px 10px 0px 0px;
-    color: #FFC107;  /* Amber for Time/Date */
+    color: orange;  /* Amber for Time/Date */
   }
 
   .time-date-icon{
@@ -197,7 +200,7 @@ $text_size: 16px;
     padding: 0px 0px 0px 6px;
     margin: 0px 5px 0px 0px;
     color: #FFF;
-    background: #FFC107;  /* Amber for Time/Date */
-    &:hover { background: darken(#FFC107, 20%); }
+    background: orange;  /* Amber for Time/Date */
+    &:hover { background: darken(orange, 20%); }
   }
 }
