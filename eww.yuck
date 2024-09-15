@@ -1,4 +1,5 @@
 (defvar nix_menu_revealed false)
+(defvar wifi_or_ssid false)
 
 (defpoll time-date :interval "1s"
 	`/$HOME/.config/eww/bin/status --time`)
@@ -23,6 +24,8 @@
 (defpoll wifi-icon :interval "1s"
   `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --connection-status`)
 
+(defpoll ip :interval "1s"
+  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --ip`)
 
 (defpoll mem :interval "1s"
   `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --mem`)
@@ -80,13 +83,22 @@
      (literal
        :content "${window_titles}")))
 
-(defwidget wifi[]
+(defwidget wifi []
   (box :class "wifi"
        :space-evenly false
-    (button :class "wifi-icon" 
+    (button :class "wifi-icon"
+            :onclick "eww update wifi_or_ssid=${!wifi_or_ssid}"
       "${wifi-icon}")
-    (button :class "wifi-data" 
-      "${wifi}")))
+    (revealer :transition "slideright"
+              :reveal wifi_or_ssid
+              :duration "300ms"
+      (button :class "wifi-data"
+        "${wifi}"))
+    (revealer :transition "slideleft"
+              :reveal {!wifi_or_ssid}
+              :duration "300ms"
+      (button :class "wifi-data"
+        "${ip}"))))
 
 (defwidget battery []
   (box :class "battery"
