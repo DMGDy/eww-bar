@@ -1,23 +1,23 @@
-$bg: rgba(#ffffff,0.1);
-$fg: #dddddd;
 
-$icon_size: 20px;
-$text_size: 16px;
+$icon_size: 16px;
+$text_size: 14px;
 
 * {
   font-family: 'Ubuntu Nerd Font', 'Ubuntu', sans-serif;
 }
 .main-container {
-  min-width: 1920px;
+  min-width: 1450px;
 }
+
 .bar {
    background-image: -gtk-gradient(
     linear,
     left top, right top,
-    from(rgba(0,230,255,.3)),
-    to(rgba(255, 0, 255, 0.8))
+    from(rgba(0,0,0,.4)),
+    to(rgba(122, 122, 122, 0.1))
   );
 }
+
 
 .workspace-entry {
   padding: 0px 0px; 
@@ -26,37 +26,44 @@ $text_size: 16px;
   color: #a89984;  // Default color for inactive workspaces
 
   button {
-    margin: 0px;
-    padding: 0px 6px;
+    margin: 0px 0px;
+    padding: 0px 4px;
     border-radius: 0px;
   }
 }
 
 .active {
     font-size: $text_size;
-    text-shadow: 1px 1px 2px white, 0 0 1em blue, 0 0 2em white;
-    background-color:#52b8fe ;  
+    background-color:#4BA3FF ;  
     transition: 0.3s ease-in-out;
     color: #fbf1c7;  // Light text color for contrast
-    &:hover { background-color: darken(#52b8fe, 20%); }
+    &:hover { background-color: darken(#4BA3FF, 20%); }
 }
 
 .occupied {
-  color:darken(#a98bf6,30%);  ;
-  background-color: darken(#a98bf6,0%);  
-  &:hover { background-color: darken(#a98bf6,20%); }
+  font-size: $text_size;
+  color:lighten(#2D2D3F,60%);
+  background-color: darken(#C79CFF,20%);  
+  &:hover { background-color: darken(#C79CFF,40%); }
 }
 .empty{
+  font-size: $text_size;
   color: #6A7A8C;
   &:hover { color: darken(#6A7A8C,20%);}
 }
 
 .window-container {
-  padding: 0px 0px 0px 0px;
-  margin: 3px 0px 0px 10px;
+  padding: 2px 0px 0px 0px;
+  margin: 0px 0px 0px 10px;
   font-size: $text_size;
 
+  .win-icon {
+    padding:0px 10px 0px 0px;
+    margin:0px 0px 0px 0px;
+  }
+
   .win-title {
+    margin: 0px;
     padding: 0px 0px; 
     color: #FFFFFF;
     font-weight: bold;
@@ -125,23 +132,22 @@ background: rgba(0,0,0,0.6);
   font-size: $text_size;
   background: rgba(0,0,0,0.6);
   button {
-    border-left: violet solid 1px;
     background: none;
     border: none;
     padding: 0px 0px 0px 0px;
-    margin: 0 0px;
+    margin: 0px 0px;
     border-radius: 0px;
   }
 
   .wifi-data {
-    padding: 0px 10px 0px 0px;
+    padding: 0px 4px 0px 0px;
     color: #4CAF50;  /* Green for WiFi */
   }
 
   .wifi-icon {
     font-size:$icon_size;
-    padding:0px 5px 0px 4px;
-    margin:0px 5px 0px 0px;
+    padding:0px 2px 0px 2px;
+    margin:0px 2px 0px 0px;
     background: #4CAF50;  /* Green for WiFi */
     color: #FFF;  /* Green for WiFi */
     &:hover { background: darken(#4CAF50,10%)}
@@ -173,18 +179,15 @@ background: rgba(0,0,0,0.6);
     &:hover {background: darken(red,20%)}
   }
 
-
-
-
   .battery-data{
-    padding: 0px 10px 0px 0px;
+    padding: 0px 1px 0px 0px;
     color: #2196F3;  /* Blue for Battery */
   }
 
   .battery-icon{
     font-size:$icon_size;
-    padding: 0px 0px 0px 5px;
-    margin: 0px 5px 0px 0px;
+    padding: 0px 0px 0px 4px;
+    margin: 0px 2px 0px 0px;
     color: #FFF;
     background: #2196F3;  /* Blue for Battery */
     &:hover { background: darken(#2196F3, 20%); }
@@ -197,8 +200,8 @@ background: rgba(0,0,0,0.6);
 
   .time-date-icon{
     font-size:$icon_size;
-    padding: 0px 0px 0px 6px;
-    margin: 0px 5px 0px 0px;
+    padding: 0px 0px 0px 3px;
+    margin: 0px 2px 0px 0px;
     color: #FFF;
     background: orange;  /* Amber for Time/Date */
     &:hover { background: darken(orange, 20%); }
