@@ -34,7 +34,7 @@
   `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --mem -i`)
 
 
-(deflisten workspaces :initial ""
+(deflisten workspaces :initial "(box :class \"workspace-entry\"(button :class \"active\" :onclick \"$HOME/.config/eww/bin/workspaces 1\" \"1\"))"
   `/$HOME/.config/eww/bin/workspaces`)
 
 (deflisten window_titles :initial ""
@@ -49,8 +49,7 @@
          :space-evenly false
       (button :class "nix-data"
         (image
-          :image-width 22
-          :image-height 22
+          :image-width 18
           :path "./nix.png"))
       (revealer :reveal nix_menu_revealed
                 :transition "slideright"
@@ -72,16 +71,12 @@
 
 
 (defwidget workspace []
-  (box :class "workspaces"
-       :halign "start"
-    (literal
-      :content "${workspaces}")))
+  (literal
+    :content "${workspaces}"))
 
 (defwidget window-title []
-  (box :class "window-tile" 
-       :halign "start"
      (literal
-       :content "${window_titles}")))
+       :content "${window_titles}"))
 
 (defwidget wifi []
   (box :class "wifi"
@@ -152,7 +147,7 @@
   :geometry
   (geometry
     :width "100%"
-    :height "0%"
+    :height "1%"
     :anchor "top center")
   :exclusive true
   (box :class "main-container"
