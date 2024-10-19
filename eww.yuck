@@ -1,5 +1,8 @@
 (defvar nix_menu_revealed false)
 (defvar wifi_or_ssid false)
+(defvar reveal_wifi false)
+(defvar reveal_mem false)
+(defvar reveal_batt false)
 
 (defpoll time-date :interval "1s"
 	`/$HOME/.config/eww/bin/status --time`)
@@ -33,6 +36,9 @@
 (defpoll mem-icon :interval "1s"
   `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --mem -i`)
 
+(defpoll cal :interval "360s"
+  `cal | sed '$d'`)
+
 
 (deflisten workspaces :initial "(box :class \"workspace-entry\"(button :class \"active\" :onclick \"$HOME/.config/eww/bin/workspaces 1\" \"1\"))"
   `/$HOME/.config/eww/bin/workspaces`)
@@ -47,10 +53,9 @@
     (box :class "nix ${nix_menu_revealed ? 'expanded' : ''}"
          :orientation "h"
          :space-evenly false
-      (button :class "nix-data"
-        (image
-          :image-width 18
-          :path "./nix.png"))
+      (button :class "nix-icon"
+        :style "background-image: url('nix.png');"
+      )
       (revealer :reveal nix_menu_revealed
                 :transition "slideright"
         (box :class "nix-menu" 
@@ -59,74 +64,127 @@
           (button :class "hibernate"
                   :onclick "systemctl hibernate"
                   :tooltip "Hibernate with Swap"
-            "⏾")
+            "⏾"
+          )
           (button :class "reboot"
                   :onclick "reboot"
                   :tooltip "Reboot the Computer"
-            "󰜉")
+            "󰜉"
+          )
           (button :class "poweroff"
                   :onclick "poweroff"
                   :tooltip "Turn off this machine"
-            "⏻"))))))
+            "⏻"
+          )
+        )
+      )
+    )
+  )
+)
 
 
 (defwidget workspace []
   (literal
-    :content "${workspaces}"))
+    :content "${workspaces}"
+  )
+)
 
 (defwidget window-title []
-     (literal
-       :content "${window_titles}"))
+   (literal
+     :content "${window_titles}"
+   )
+)
 
 (defwidget wifi []
   (box :class "wifi"
        :space-evenly false
     (button :class "wifi-icon"
-            :onclick "eww update wifi_or_ssid=${!wifi_or_ssid}"
+            :onclick "eww update reveal_wifi=${!reveal_wifi}"
+            :tooltip "${wifi}"
       "${wifi-icon}")
     (revealer :transition "slideright"
-              :reveal wifi_or_ssid
+              :reveal {wifi_or_ssid && reveal_wifi}
               :duration "300ms"
       (button :class "wifi-data"
+              :onclick "eww update wifi_or_ssid=${!wifi_or_ssid}"
         "${wifi}"))
     (revealer :transition "slideleft"
-              :reveal {!wifi_or_ssid}
+              :reveal {!wifi_or_ssid && reveal_wifi}
               :duration "300ms"
       (button :class "wifi-data"
-        "${ip}"))))
+              :onclick "eww update wifi_or_ssid=${!wifi_or_ssid}"
+        "${ip}"
+      )
+    )
+  )
+)
 
 (defwidget battery []
   (box :class "battery"
        :space-evenly false
     (button :class "battery-icon" 
-            :tooltip "${battery-life}"
-      "${battery-icon}")
-    (button :class "battery-data"
-      "${battery}")))
+            :tooltip "${battery}: ${battery-life}"
+            :onclick "eww update reveal_batt=${!reveal_batt}"
+      "${battery-icon}"
+    )
+    (revealer
+      :transition "slideright"
+      :reveal reveal_batt
+      :duration "100ms"
+      (button :class "battery-data"
+        "${battery}"
+      )
+    )
+    (revealer
+      :transition "slideleft"
+      :reveal {!reveal_batt}
+    )
+  )
+)
 
 (defwidget time-date []
-    (box :class "time-date"
-         :space-evenly false
-      (button :class "time-date-icon"
-        "${time-date-icon}")
-      (button :class "time-date-data" 
-        "${time-date}")))
+  (box :class "time-date"
+       :space-evenly false
+       :tooltip "${cal}"
+    (button :class "time-date-data" 
+      "${time-date}"
+    )
+  )
+)
 
 (defwidget mem[]
-    (box :class "mem"
-         :space-evenly false
-      (button :class "mem-icon"
-      "${mem-icon}")
+  (box :class "mem"
+       :space-evenly false
+    (button :class "mem-icon"
+            :tooltip "${mem}"
+            :onclick "eww update reveal_mem=${!reveal_mem}"
+    "${mem-icon}"
+    )
+    (revealer :transition "slideleft"
+              :reveal reveal_mem
+              :duration "100ms"
       (button :class "mem-data"
-      "${mem}")))
+      "${mem}"
+      )
+    )
+    (revealer :transition "slideright"
+              :reveal {!reveal_mem}
+              :duration "100ms"
+    )
+  )
+)
 
 (defwidget usr[]
-    (box :class "usr"
-         :space-evenly false
-      (button :class "usr-icon"
-      "")
-      (button :class "name"
-      "dylandy")))
+  (box :class "usr"
+       :space-evenly false
+    (button :class "usr-icon"
+      ""
+    )
+    (button :class "name"
+    "dylandy"
+    )
+  )
+)
 
 
 
@@ -134,11 +192,12 @@
   (box :class "status-widgets"
        :halign "end"
        :space-evenly false
-    (usr)
     (wifi)
     (mem)
     (battery)
-    (time-date)))
+    (time-date)
+  )
+)
 
 (defwindow bar
   :monitor 0
@@ -147,9 +206,10 @@
   :geometry
   (geometry
     :width "100%"
-    :height "1%"
-    :anchor "top center")
-  :exclusive true
+    :height "0%"
+    :anchor "top center"
+  )
+    :exclusive true
   (box :class "main-container"
        :space-evenly false
     (box 
@@ -160,5 +220,8 @@
        (window-title))
        (box :halign "end"
             :hexpand true
-       (status-widgets))))
+       (status-widgets)
+    )
+  )
+)
        

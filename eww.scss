@@ -1,12 +1,13 @@
-
-$icon_size: 16px;
+$icon_size: 20px;
 $text_size: 14px;
+$timedate_color: #AA22FF;  
+$battery_color: #2196F3;
 
 * {
   font-family: 'Ubuntu Nerd Font', 'Ubuntu', sans-serif;
-}
-.main-container {
+} .main-container {
   min-width: 1450px;
+  min-height: 0px;
 }
 
 .bar {
@@ -23,14 +24,22 @@ $text_size: 14px;
   padding: 0px 0px; 
   margin: 0px;
 
-  color: #a89984;  // Default color for inactive workspaces
 
   button {
     margin: 0px 0px;
     padding: 0px 4px;
     border-radius: 0px;
+    outline-width: 0px;
+    outline-offset: 0px;
   }
 }
+  .workspace-int {
+    margin: 0px;
+    padding: 0px;
+    outline-width: 0px;
+    outline-offset: 0px;
+
+  }
 
 .active {
     font-size: $text_size;
@@ -52,32 +61,59 @@ $text_size: 14px;
   &:hover { color: darken(#6A7A8C,20%);}
 }
 
+
+// the button
+.window-tab {
+  margin: 0px 0px 0px 16px;
+  border: 1px solid white;
+  box-shadow:
+    0 0 2px white,
+    0 0 5px white,
+    0 0 3px red,
+    0 0 5px blue;
+  padding: 0px 16px 0px 8px;
+  border-radius: 2px;
+  background: rgba(0,0,0,.6);
+  &:hover {
+    background: rgba(50,50,50,.6);
+   box-shadow:
+    0 0 8px white,
+    0 0 10px white,
+    0 0 6px red,
+    0 0 10px blue;
+ }
+}
+
 .window-container {
-  padding: 2px 0px 0px 0px;
-  margin: 0px 0px 0px 10px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  border-radius: 0px;
   font-size: $text_size;
+  min-width: 0px;
+  min-height: 0px;
+}
 
-  .win-icon {
-    padding:0px 10px 0px 0px;
-    margin:0px 0px 0px 0px;
-  }
 
-  .win-title {
+.win-icon {
+  margin: 0px 8px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  background: none;
+  background-repeat: no-repeat;
+  background-size: 21px;
+  border-radius: 0px;
+  min-width:22px;
+}
+
+.win-title {
     margin: 0px;
+    background: none;
     padding: 0px 0px; 
     color: #FFFFFF;
     font-weight: bold;
     text-shadow: 1px 1px 4px white, 0 0 1em blue, 0 0 0.2em blue;
-  }
-
-  .win-info {
-    color: #EEEEEE;
-    font-weight: bold;
-    font-style: italic;
-  }
+    min-width: 0px;
+    min-height: 0px;
 }
-
-
 
 
 .nix {
@@ -93,9 +129,16 @@ background: rgba(0,0,0,0.6);
     margin: 0px;
   }
 
-  .nix-button {
-    padding: 0px 0px;
-    margin:0px;
+  .nix-icon{
+    padding: 0px 0px 0px 0px;
+    margin:0px 0px 0px 0px;
+    background: none;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    border-radius: 0px;
+    min-width:24px;
+    min-height:20px;
+
   }
 
   .nix-menu {
@@ -146,29 +189,29 @@ background: rgba(0,0,0,0.6);
 
   .wifi-icon {
     font-size:$icon_size;
-    padding:0px 2px 0px 2px;
-    margin:0px 2px 0px 0px;
+    padding:0px 2px;
+    margin:0px 0px 0px 0px;
     background: #4CAF50;  /* Green for WiFi */
     color: #FFF;  /* Green for WiFi */
     &:hover { background: darken(#4CAF50,10%)}
   }
 
   .mem-data{
-    padding: 0px 10px 0px 0px;
+    margin: 0px 0px 0px 4px;
     color: lighten(#008080, 10%);  
   }
   .mem-icon {
     font-size:$icon_size;
     padding: 0px 8px 0px 5px;
-    margin: 0px 5px 0px 0px;
+    margin: 0px 0px 0px 0px;
     color: #FFF;
     background: lighten(#008080, 10%);  
     &:hover { background: #008080}
   }
   .name{
     padding: 0px 8px 0px 2px;
-    color: red;  
-    text-shadow: red 1px 0 2px;
+    color: white;  
+    text-shadow: 1px 1px 4px white, 0 0 1em blue, 0 0 0.2em blue;
   }
   .usr-icon {
     font-size:$icon_size;
@@ -180,30 +223,28 @@ background: rgba(0,0,0,0.6);
   }
 
   .battery-data{
-    padding: 0px 1px 0px 0px;
+    padding: 0px 0px 0px 0px;
     color: #2196F3;  /* Blue for Battery */
   }
 
   .battery-icon{
     font-size:$icon_size;
     padding: 0px 0px 0px 4px;
-    margin: 0px 2px 0px 0px;
+    margin: 0px 0px 0px 0px;
     color: #FFF;
-    background: #2196F3;  /* Blue for Battery */
+    background: $battery_color;  /* Blue for Battery */
     &:hover { background: darken(#2196F3, 20%); }
   }
 
   .time-date-data{
-    padding: 0px 10px 0px 0px;
-    color: orange;  /* Amber for Time/Date */
-  }
+    margin: 0px 8px 0px 0px;
+    padding: 0px 8px;
+    border-left: 1px solid white;
+    font-weight: bold;
+    font-size:10px;
+    color: white;  
+  
+    &:hover { text-shadow: 1px 1px 4px white, 0 0 1em blue, 0 0 0.2em blue; }
 
-  .time-date-icon{
-    font-size:$icon_size;
-    padding: 0px 0px 0px 3px;
-    margin: 0px 2px 0px 0px;
-    color: #FFF;
-    background: orange;  /* Amber for Time/Date */
-    &:hover { background: darken(orange, 20%); }
   }
 }
