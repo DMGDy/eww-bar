@@ -3,6 +3,7 @@
 (defvar reveal_wifi false)
 (defvar reveal_mem false)
 (defvar reveal_batt false)
+(defvar rev_all true)
 
 (defpoll time-date :interval "1s"
 	`/$HOME/.config/eww/bin/status --time`)
@@ -106,13 +107,13 @@
       "${wifi-icon}")
     (revealer :transition "slideright"
               :reveal {wifi_or_ssid && reveal_wifi}
-              :duration "300ms"
+              :duration "100ms"
       (button :class "wifi-data"
               :onclick "eww update wifi_or_ssid=${!wifi_or_ssid}"
         "${wifi}"))
     (revealer :transition "slideleft"
               :reveal {!wifi_or_ssid && reveal_wifi}
-              :duration "300ms"
+              :duration "100ms"
       (button :class "wifi-data"
               :onclick "eww update wifi_or_ssid=${!wifi_or_ssid}"
         "${ip}"
@@ -125,7 +126,8 @@
   (box :class "battery"
        :space-evenly false
     (button :class "battery-icon" 
-            :tooltip "${battery}: ${battery-life}"
+            :tooltip "                  ${battery}
+${battery-life}"
             :onclick "eww update reveal_batt=${!reveal_batt}"
       "${battery-icon}"
     )
@@ -176,10 +178,41 @@
   )
 )
 
+(defwidget reveal-arrow []
+  (box :class "revealer"
+    :space-evenly false 
+    (revealer :transition "slideleft"
+              :reveal rev_all
+              :duration "10ms"
+      (button :class "reveal-all-button"
+              :tooltip "reveal all"
+              :onclick "eww update reveal_mem=true;
+              eww update reveal_batt=true;
+              eww update reveal_wifi=true;
+              eww update rev_all=false"
+              "󰬧"
+      )
+    )
+    (revealer :transition "slideright"
+              :reveal {!rev_all}
+              :duration "10ms"
+      (button :class "reveal-all-button"
+              :tooltip "hide all"
+              :onclick "eww update reveal_mem=false;
+              eww update reveal_batt=false;
+              eww update reveal_wifi=false;
+              eww update rev_all=true"
+              "󰬭"
+      )
+    )
+  )
+)
+
 (defwidget status-widgets []
   (box :class "status-widgets"
        :halign "end"
        :space-evenly false
+    (reveal-arrow)
     (wifi)
     (mem)
     (battery)
