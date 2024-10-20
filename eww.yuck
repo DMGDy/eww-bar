@@ -25,7 +25,7 @@
   `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --wifi-info`)
 
 (defpoll wifi-icon :interval "1s"
-  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --connection-status`)
+  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --wifi-strength`)
 
 (defpoll ip :interval "1s"
   `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --ip`)
@@ -57,10 +57,12 @@
         :style "background-image: url('nix.png');"
       )
       (revealer :reveal nix_menu_revealed
-                :transition "slideright"
-        (box :class "nix-menu" 
-             :orientation "h" 
+              :transition "slideright"
+        (box :class "nix-menu"
+             :orientation "h"
              :space-evenly false
+           :orientation "h" 
+           :space-evenly false
           (button :class "hibernate"
                   :onclick "systemctl hibernate"
                   :tooltip "Hibernate with Swap"
@@ -77,7 +79,7 @@
             "⏻"
           )
         )
-      )
+      ) 
     )
   )
 )
@@ -173,20 +175,6 @@
     )
   )
 )
-
-(defwidget usr[]
-  (box :class "usr"
-       :space-evenly false
-    (button :class "usr-icon"
-      ""
-    )
-    (button :class "name"
-    "dylandy"
-    )
-  )
-)
-
-
 
 (defwidget status-widgets []
   (box :class "status-widgets"

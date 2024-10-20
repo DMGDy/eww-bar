@@ -208,19 +208,6 @@ background: rgba(0,0,0,0.6);
     background: lighten(#008080, 10%);  
     &:hover { background: #008080}
   }
-  .name{
-    padding: 0px 8px 0px 2px;
-    color: white;  
-    text-shadow: 1px 1px 4px white, 0 0 1em blue, 0 0 0.2em blue;
-  }
-  .usr-icon {
-    font-size:$icon_size;
-    padding: 0px 5px;
-    margin: 0px 5px 0px 0px;
-    color: #FFF;
-    background: red;  
-    &:hover {background: darken(red,20%)}
-  }
 
   .battery-data{
     padding: 0px 0px 0px 0px;
