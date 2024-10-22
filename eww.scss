@@ -14,7 +14,7 @@ $battery_color: #2196F3;
    background-image: -gtk-gradient(
     linear,
     left top, right top,
-    from(rgba(0,0,0,.4)),
+    from(rgba(0,0,0,.9)),
     to(rgba(122, 122, 122, 0.1))
   );
 }
@@ -62,20 +62,18 @@ $battery_color: #2196F3;
 }
 
 
+.window-container {
+  background: none;
+}
+
 // the button
-.window-tab {
-  margin: 0px 0px 0px 16px;
-  border: 1px solid white;
-  box-shadow:
-    0 0 2px white,
-    0 0 5px white,
-    0 0 3px red,
-    0 0 5px blue;
-  padding: 0px 16px 0px 8px;
-  border-radius: 2px;
-  background: rgba(0,0,0,.6);
-  &:hover {
-    background: rgba(50,50,50,.6);
+.active-window {
+  margin: 0px 6px; 
+  padding: 0px 2px;
+  border-radius: 0px;
+  background: none;
+  text-shadow: 1px 1px 4px white, 0 0 1em blue, 0 0 0.2em blue;
+   &:hover {
    box-shadow:
     0 0 8px white,
     0 0 10px white,
@@ -84,24 +82,60 @@ $battery_color: #2196F3;
  }
 }
 
-.window-container {
+.active-workspace {
+ margin: 0px 16px 0px 8px;
+ border: 1px solid white;
+   box-shadow:
+   0 0 4px white,
+   0 0 6px white,
+   0 0 2px red,
+   0 0 3px blue;
+   
+}
+.workspace {
+  border: 1px solid white;
+}
+
+.tag-id {
+  margin:0px 0px 0px 2px;
+  font-size: 12px;
+  color: white;
+}
+
+.inactive-window {
+  background:none;
+  margin: 0px 3px;
+  padding: 0px 1px;
+}
+
+.window-tab{
+  background:none;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   border-radius: 0px;
   font-size: $text_size;
   min-width: 0px;
-  min-height: 0px;
+  &:hover {
+    box-shadow:
+     0 0 4px white,
+     0 0 5px white,
+     0 0 4px red,
+     0 0 4px blue;
+  }
+  
+ min-height: 0px;
 }
 
 
 .win-icon {
-  margin: 0px 8px 0px 0px;
+  margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   background: none;
   background-repeat: no-repeat;
-  background-size: 21px;
+  background-size: 20px;
   border-radius: 0px;
   min-width:22px;
+  min-height:22px;
 }
 
 .win-title {
@@ -110,17 +144,15 @@ $battery_color: #2196F3;
     padding: 0px 0px; 
     color: #FFFFFF;
     font-weight: bold;
-    text-shadow: 1px 1px 4px white, 0 0 1em blue, 0 0 0.2em blue;
     min-width: 0px;
     min-height: 0px;
 }
 
 
 .nix {
-  padding: 0px 8px;
+  padding: 0px 4px 0px 8px;
   margin: 0px ;
-background: rgba(0,0,0,0.6);
-
+  background: none; 
 
   button {
     background: none;
@@ -134,7 +166,7 @@ background: rgba(0,0,0,0.6);
     margin:0px 0px 0px 0px;
     background: none;
     background-repeat: no-repeat;
-    background-size: 24px;
+    background-size: 26px;
     border-radius: 0px;
     min-width:24px;
     min-height:20px;
@@ -167,7 +199,7 @@ background: rgba(0,0,0,0.6);
 
 .reboot{
   color: #0056b3;
-  &:hover { color: lighten(#0056b3, 20%); }
+  &:hover { color: darken(#0056b3, 20%); }
 }
 
 .status-widgets {
@@ -202,6 +234,7 @@ background: rgba(0,0,0,0.6);
     color: lighten(#008080, 10%);  
     background: rgba(0,0,0,0.6);
   }
+
   .mem-icon {
     font-size:$icon_size;
     padding: 0px 8px 0px 5px;

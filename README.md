@@ -10,6 +10,7 @@ Notice how `Scripts/` is empty. all system information fetchers are compiled bin
 * [eww-bar-widget-generator](https://github.com/DMGDy/eww-bar-widget-generator)
 * [statuses](https://github.com/DMGDy/statuses)
 * [statuses-rs](https://github.com/DMGDy/statuses-rs)
+* [eww-windows](https://github.com/DMGDy/eww-windows)
 
 compiled binaries are far faster and more efficient to run compared to scripts. would make sense for tools such as these that are always running.
 
@@ -19,6 +20,9 @@ compiled binaries are far faster and more efficient to run compared to scripts. 
 * Dynamic workspace tracking bar
     * different css classes for `inactive`, `occupied`, and `empty`
     * dwm like look
+* List of open windows similar to windows
+    * click to switch to window (and attached workspace)
+    * in order of recently accessed
 * Window title and description
 * System power buttons (hibernate,reboot,poweroff)
 * status modules as compiled binaries

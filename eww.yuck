@@ -1,9 +1,11 @@
 (defvar nix_menu_revealed false)
+(defvar close_button false)
 (defvar wifi_or_ssid false)
 (defvar reveal_wifi false)
 (defvar reveal_mem false)
 (defvar reveal_batt false)
 (defvar rev_all true)
+(defvar nl "\n") 
 
 (defpoll time-date :interval "1s"
 	`/$HOME/.config/eww/bin/status --time`)
@@ -43,6 +45,9 @@
 
 (deflisten workspaces :initial "(box :class \"workspace-entry\"(button :class \"active\" :onclick \"$HOME/.config/eww/bin/workspaces 1\" \"1\"))"
   `/$HOME/.config/eww/bin/workspaces`)
+
+(deflisten window_tabs :initial ""
+  `$HOME/.config/eww/eww-windows/target/release/eww-windows`)
 
 (deflisten window_titles :initial ""
   `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --window-info`)
@@ -126,7 +131,7 @@
   (box :class "battery"
        :space-evenly false
     (button :class "battery-icon" 
-            :tooltip "                  ${battery}
+            :tooltip "${battery} 
 ${battery-life}"
             :onclick "eww update reveal_batt=${!reveal_batt}"
       "${battery-icon}"
@@ -208,11 +213,18 @@ ${battery-life}"
   )
 )
 
+(defwidget window-tabs []
+  (literal 
+    :content "${window_tabs}")
+)
+
 (defwidget status-widgets []
   (box :class "status-widgets"
        :halign "end"
        :space-evenly false
-    (reveal-arrow)
+    (eventbox :cursor "pointer"
+      (reveal-arrow)
+    )
     (wifi)
     (mem)
     (battery)
@@ -238,7 +250,7 @@ ${battery-life}"
        :space-evenly false 
        (nix-icon)
        (workspace)
-       (window-title))
+       (window-tabs))
        (box :halign "end"
             :hexpand true
        (status-widgets)
