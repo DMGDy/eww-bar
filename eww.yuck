@@ -36,9 +36,6 @@
 (defpoll mem :interval "1s"
   `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --mem`)
 
-(defpoll mem-icon :interval "1s"
-  `$HOME/.config/eww/statuses-rs/target/release/statuses-rs --mem -i`)
-
 (defpoll cal :interval "360s"
   `cal | sed '$d'`)
 
@@ -167,7 +164,7 @@ ${battery-life}"
     (button :class "mem-icon"
             :tooltip "${mem}"
             :onclick "eww update reveal_mem=${!reveal_mem}"
-    "${mem-icon}"
+    ""
     )
     (revealer :transition "slideleft"
               :reveal reveal_mem
